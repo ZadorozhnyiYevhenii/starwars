@@ -2,3 +2,11 @@
 @tailwind components;
 @tailwind utilities;
 
+body {
+  min-width: 100vw;
+  box-sizing: border-box;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  background-color: #f7f7f7;
+}

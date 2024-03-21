@@ -9,7 +9,7 @@ export const HerosList = () => {
   const { heros, error, isLoading } = useFetchHeros();
 
   return (
-    <ul>
+    <ul className='flex flex-col gap-14 my-14'>
       {isLoading && <UILoader />}
       {error && <UIAlertMessage title={error} status='error' />}
       {heros.map(hero => (
