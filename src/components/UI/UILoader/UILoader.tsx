@@ -1,8 +1,8 @@
 import { Spinner } from "@chakra-ui/react";
 
 export const UILoader = ({
-  width = 40,
-  height = 40
+  width = 35,
+  height = 35
 }: {
   width?: number;
   height?: number;
