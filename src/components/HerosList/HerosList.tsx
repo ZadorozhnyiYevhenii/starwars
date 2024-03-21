@@ -9,16 +9,20 @@ import { UIAlertMessage } from "../UI/UIAlertMessage/UIAlertMessage";
 export const HerosList = () => {
   const { heros, error, isLoading, fetchNextPage } = useFetchHeros();
   const observer = useRef<IntersectionObserver | null>(null);
+  const isFetching = useRef(false);
 
   useEffect(() => {
     observer.current = new IntersectionObserver(
       (entries) => {
-        if (entries[0].isIntersecting) {
-          fetchNextPage();
+        if (entries[0].isIntersecting && !isFetching.current) {
+          isFetching.current = true;
+          fetchNextPage().then(() => {
+            isFetching.current = false;
+          });
         }
       },
       {
-        threshold: 0.5,
+        threshold: 1,
       }
     );
 
@@ -49,7 +53,7 @@ export const HerosList = () => {
           <UILoader />
         </div>
       )}
-      <div id="bottom" className="h-10" />
+      <div id="bottom" className="h-40" />
     </ul>
   );
 };

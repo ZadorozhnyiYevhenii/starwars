@@ -2,11 +2,11 @@ import { useEffect, useState } from "react";
 import { getHeros } from "@/api/getRequests/getHeros";
 import { IHero } from "@/types/IHero";
 
-export const useFetchHeros = (initialPage: number = 1) => {
+export const useFetchHeros = () => {
   const [heros, setHeros] = useState<IHero[]>([]);
   const [isLoading, setIsLoading] = useState(false);
   const [error, setError] = useState("");
-  const [nextPageUrl, setNextPageUrl] = useState<string | null>(null);
+  const [nextPageUrl, setNextPageUrl] = useState<string>('');
 
   useEffect(() => {
     const fetchHeros = async () => {
@@ -23,16 +23,16 @@ export const useFetchHeros = (initialPage: number = 1) => {
     };
 
     fetchHeros();
-  }, [initialPage]);
+  }, []);
+
 
   const fetchNextPage = async () => {
     if (nextPageUrl) {
       try {
         setIsLoading(true);
-        const response = await fetch(nextPageUrl);
-        const data = await response.json();
-        setHeros((prevHeros) => [...prevHeros, ...data.results]);
-        setNextPageUrl(data.next);
+        const response = await getHeros(nextPageUrl);
+        setHeros((prevHeros) => [...prevHeros, ...response.results]);
+        setNextPageUrl(response.next);
       } catch (error) {
         setError("Could not get the next page of heros. Please try it again!");
         console.error(error);

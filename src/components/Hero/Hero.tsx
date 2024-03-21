@@ -24,6 +24,9 @@ export const Hero = ({ hero }: { hero: IHero }) => {
             <Text fontSize="lg">
               <strong className='text-blue-500'>Mass:</strong> {hero.mass}
             </Text>
+            <Text fontSize="lg">
+              <strong className='text-blue-500'>Gender:</strong> {hero.gender}
+            </Text>
           </div>
           <div>
             <Text fontSize="lg">
