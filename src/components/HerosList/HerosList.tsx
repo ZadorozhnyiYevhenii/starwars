@@ -22,7 +22,7 @@ export const HerosList = () => {
         }
       },
       {
-        threshold: 1,
+        threshold: 0.5,
       }
     );
 
@@ -41,7 +41,7 @@ export const HerosList = () => {
   }, [fetchNextPage]);
 
   return (
-    <ul className="flex flex-col gap-14 my-14">
+    <ul className="flex flex-col gap-14 my-14 mx-8">
       {error && <UIAlertMessage title={error} status="error" />}
       {heros.map((hero, index) => (
         <li key={index}>
@@ -53,7 +53,7 @@ export const HerosList = () => {
           <UILoader />
         </div>
       )}
-      <div id="bottom" className="h-40" />
+      <div id="bottom" className="h-10" />
     </ul>
   );
 };
