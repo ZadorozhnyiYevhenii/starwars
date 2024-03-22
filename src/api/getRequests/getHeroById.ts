@@ -1,7 +1,7 @@
 import { IHero } from "@/types/IHero";
 import { BASE_URL, instance } from "../core";
 
-export const getHeroByName = async (id: string) => {
+export const getHeroById = async (id: string | undefined) => {
   try {
     const response = await instance.get(`/people/${id}`);
 

@@ -1,4 +1,4 @@
-import { getHeroByName } from "@/api/getRequests/getHeroByName";
+import { NodeVizualize } from "@/components/NodeVizualize/NodeVizualize";
 
 interface HeroParams {
   params: {
@@ -6,9 +6,9 @@ interface HeroParams {
   };
 }
 
-export default async function HeroDetails({ params }: HeroParams) {
-  const heroDetails = await getHeroByName(params.id);
-
-  console.log(heroDetails)
-  return <div>{heroDetails.name}</div>;
+export default function HeroDetails({ params }: HeroParams) {
+  
+  return (
+    <NodeVizualize id={params.id} />
+  );
 }
