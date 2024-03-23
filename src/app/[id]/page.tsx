@@ -1,4 +1,4 @@
-import { NodeVizualize } from "@/components/NodeVizualize/NodeVizualize";
+import { HeroConnections } from "@/components/HeroConnections/HeroConnections";
 
 interface HeroParams {
   params: {
@@ -7,8 +7,5 @@ interface HeroParams {
 }
 
 export default function HeroDetails({ params }: HeroParams) {
-  
-  return (
-    <NodeVizualize id={params.id} />
-  );
+  return <HeroConnections id={params.id} />;
 }
