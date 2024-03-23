@@ -1,9 +1,9 @@
 import { useEffect, useState } from "react";
 
-export const useFetch = <T, K>(
+export const useFetch = <T, K = null>(
   apiCall: (arg?: K) => Promise<T>,
   errorMessage: string,
-  arg?: K,
+  arg?: K
 ) => {
   const [data, setData] = useState<T | null>(null);
   const [isLoading, setIsLoading] = useState(false);

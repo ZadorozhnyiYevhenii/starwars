@@ -1,19 +1,25 @@
 "use client";
 
-import { getSpaceshipById } from "@/api/getRequests/getSpaceshipById";
+import { getSpaceshipByIds } from "@/api/getRequests/getSpaceshipById";
 import { useFetch } from "@/hooks/useFetch";
 import { UILoader } from "../UI/UILoader/UILoader";
 import { UILabel } from "../UI/UILabel/UILabel";
+import { Errors } from "@/api/getRequests/constants";
+import { IStarship } from "@/types/IStarship";
 
 export const StarshipList = ({ id }: { id: number[] }) => {
-  const { data, isLoading } = useFetch(getSpaceshipById, "e", id);
+  const { data: starships, isLoading } = useFetch<IStarship[], number[]>(
+    getSpaceshipByIds as () => Promise<IStarship[]>,
+    Errors.SPACESHIP,
+    id
+  );
   return (
     <>
       {isLoading && <UILoader />}
       <ul className="flex flex-col gap-2">
-        {data?.map((film) => (
-          <li key={film.model}>
-            <UILabel label={film.name} color="blue" />
+        {starships?.map((starship) => (
+          <li key={starship.model}>
+            <UILabel label={starship.name} color="blue" />
           </li>
         ))}
       </ul>

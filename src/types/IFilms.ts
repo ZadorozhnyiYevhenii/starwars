@@ -3,5 +3,5 @@ export interface IFilm {
   director: string;
   producer: string;
   characters: number[];
-  starships: number[]
+  starships: number[];
 }
