@@ -12,8 +12,8 @@ export const StarshipList = ({ id }: { id: number[] }) => {
       {isLoading && <UILoader />}
       <ul className="flex flex-col gap-2">
         {data?.map((film) => (
-          <li>
-            <UILabel label={film.name} key={film.model} color="blue" />
+          <li key={film.model}>
+            <UILabel label={film.name} color="blue" />
           </li>
         ))}
       </ul>
