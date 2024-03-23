@@ -8,5 +8,6 @@ export interface IHero {
   eye_color: string;
   skin_color: string;
   created: string;
+  starships: number[];
   url: string;
 }

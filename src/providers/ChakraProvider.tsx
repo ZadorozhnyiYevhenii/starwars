@@ -2,6 +2,7 @@
 
 import React from "react";
 import { ChakraProvider, extendTheme } from "@chakra-ui/react";
+import { ReactFlowProvider } from "reactflow";
 
 const theme = extendTheme({
   styles: {
@@ -21,7 +22,9 @@ export const StyleProvider = ({
 }) => {
   return (
     <ChakraProvider theme={theme}>
+      <ReactFlowProvider>
       {children}
+      </ReactFlowProvider>
     </ChakraProvider>
   );
 };
