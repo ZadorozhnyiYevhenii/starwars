@@ -33,7 +33,11 @@ export const HeroConnections = ({ id }: { id: string }) => {
 
   const filmNodes = films?.map((film, index) => ({
     id: `film_${film.title}`,
-    data: { label: <UILabel label={film.title} loading={filmsLoading} color="purple" /> },
+    data: {
+      label: (
+        <UILabel label={film.title} loading={filmsLoading} color="purple" />
+      ),
+    },
     position: { x: clientWidth / 4.4 + index * 200, y: 300 + 1 * 100 },
     targetHandle: false,
   }));
@@ -73,20 +77,12 @@ export const HeroConnections = ({ id }: { id: string }) => {
 
   return (
     <div className="h-screen w-screen relative flex justify-center flex-col items-center">
-      {heroLoading ? (
-        <UILoader />
-      ) : (
-        <>
-          <h1 className="text-center mt-12 text-xl text-cyan-600">
-            {hero?.name}`s connections
-          </h1>
-          <ReactFlow
-            nodes={nodes}
-            edges={allEdges}
-            zoomOnScroll={false}
-          ></ReactFlow>
-        </>
-      )}
+      <h1 className="text-center mt-12 text-xl text-cyan-600">{hero?.name}</h1>
+      <ReactFlow
+        nodes={nodes}
+        edges={allEdges}
+        zoomOnScroll={false}
+      ></ReactFlow>
     </div>
   );
 };
