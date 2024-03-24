@@ -1,6 +1,6 @@
 "use client";
 
-import ReactFlow from "reactflow";
+import ReactFlow, { MiniMap } from "reactflow";
 import "reactflow/dist/style.css";
 import { getFilms } from "@/api/getRequests/getFilms";
 import { getHeroById } from "@/api/getRequests/getHeroById";
@@ -11,6 +11,10 @@ import { StarshipList } from "../StarshipList/StarshipList";
 import { groupHerosWithStarship } from "@/helpers/groupHerosWithStarship";
 import { UILabel } from "../UI/UILabel/UILabel";
 import { Errors } from "@/api/getRequests/constants";
+import { nodeStyles } from "./constants";
+import { UIHeading } from "../UI/UIHeading/UIHeading";
+import { ArrowBackIcon } from "@chakra-ui/icons";
+import Link from "next/link";
 
 let clientWidth: number;
 
@@ -39,23 +43,32 @@ export const HeroConnections = ({ id }: { id: string }) => {
     {
       id: "hero",
       label: hero?.name,
-      data: { label: <UILabel label={hero?.name} /> },
-      position: { x: clientWidth / 2.2, y: 100 },
+      data: { label: <UILabel label={hero?.name} size="lg" /> },
+      position: { x: clientWidth / 2.25, y: 100 },
       sourceHandle: true,
+      style: nodeStyles.hero,
     },
     ...(films?.map((film, index) => ({
       id: `film_${film.title}`,
       data: {
         label: (
-          <UILabel label={film.title} loading={filmsLoading} color="purple" />
+          <UILabel
+            label={film.title}
+            loading={filmsLoading}
+            color="purple"
+            size="md"
+          />
         ),
       },
-      position: { x: clientWidth / 4.4 + index * 200, y: 300 + 1 * 100 },
+      className: "circle",
+      style: nodeStyles.films,
+      position: { x: clientWidth / 4.5 + index * 200, y: 300 + 1 * 100 },
       targetHandle: false,
     })) || []),
     ...(heroWithStarship?.map((data, index) => ({
       id: `starship_${data.title}`,
       data: { label: <StarshipList id={data.starships} key={index} /> },
+      style: nodeStyles.starships,
       position: { x: clientWidth / 4.4 + index * 300, y: 500 + 1 * 100 },
       targetHandle: false,
     })) || []),
@@ -67,6 +80,9 @@ export const HeroConnections = ({ id }: { id: string }) => {
       source: "hero",
       target: `film_${filmNode.title}`,
       label: "Played here",
+      style: {
+        background: "blue",
+      },
     })) || []),
     ...(heroWithStarship?.map((data) => ({
       id: `edge_${data.title}`,
@@ -78,8 +94,22 @@ export const HeroConnections = ({ id }: { id: string }) => {
 
   return (
     <div className="h-screen w-screen relative flex justify-center flex-col items-center">
-      <h1 className="text-center mt-12 text-xl text-cyan-600">{hero?.name}</h1>
-      <ReactFlow nodes={nodes} edges={edges} zoomOnScroll={false}></ReactFlow>
+      <div className='flex items-center mt-12 gap-6'>
+        <UIHeading
+          type="h1"
+          size="lg"
+          classname="text-center  text-indigo-800"
+        >
+          {hero?.name}
+        </UIHeading>
+        <Link href={"/"}>
+          <ArrowBackIcon />
+        </Link>
+      </div>
+
+      <ReactFlow nodes={nodes} edges={edges} zoomOnScroll={false}>
+        <MiniMap />
+      </ReactFlow>
     </div>
   );
 };

@@ -1,11 +1,16 @@
 import { HerosList } from "@/components/HerosList/HerosList";
+import { UIHeading } from "@/components/UI/UIHeading/UIHeading";
 
 export default function Home() {
   return (
     <main>
-      <h1 className="text-2xl font-bold text-gray-800 mb-4 text-center mt-14">
+      <UIHeading
+        type="h1"
+        size="lg"
+        classname="text-center mt-10"
+      >
         All Starwars Heros
-      </h1>
+      </UIHeading>
 
       <HerosList />
     </main>

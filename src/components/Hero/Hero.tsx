@@ -5,18 +5,20 @@ import {
   CardBody,
   CardFooter,
   CardHeader,
-  Heading,
   Text,
 } from "@chakra-ui/react";
 import Link from "next/link";
+import { UIHeading } from "../UI/UIHeading/UIHeading";
 
 export const Hero = ({ hero }: { hero: IHero }) => {
-  const heroId = hero.url.split('/').filter(id => +id);
+  const heroId = hero.url.split("/").filter((id) => +id);
 
   return (
     <Card align="center" boxShadow="md" borderRadius="md" p={4}>
       <CardHeader>
-        <Heading size="md">{hero.name}</Heading>
+        <UIHeading size="md" type="h2" classname="text-center">
+          {hero.name}
+        </UIHeading>
       </CardHeader>
       <CardBody>
         <div className="grid grid-cols-2 gap-6">

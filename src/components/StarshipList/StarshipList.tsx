@@ -19,7 +19,7 @@ export const StarshipList = ({ id }: { id: number[] }) => {
       <ul className="flex flex-col gap-2">
         {starships?.map((starship) => (
           <li key={starship.model}>
-            <UILabel label={starship.name} color="blue" />
+            <UILabel label={starship.name} color="yellow" />
           </li>
         ))}
       </ul>

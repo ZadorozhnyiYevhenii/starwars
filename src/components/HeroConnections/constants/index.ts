@@ -1,0 +1,31 @@
+export const nodeStyles = {
+  hero: {
+    background: "purple",
+    color: "#fff",
+    borderColor: "none",
+    width: "18em",
+    height: "8em",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  films: {
+    background: "rgba(83, 83, 95, 0.48)",
+    borderColor: "rgba(83, 83, 95, 0.48)",
+    color: "white",
+    width: "15em",
+    height: "6em",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+  starships: {
+    background: "#FED7D7",
+    color: "white",
+    borderColor: "none",
+    width: "15em",
+    display: "flex",
+    alignItems: "center",
+    justifyContent: "center",
+  },
+};
