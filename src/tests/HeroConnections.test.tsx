@@ -16,7 +16,7 @@ jest.mock("@/api/getRequests/getFilms", () => ({
 }));
 
 jest.mock("@/api/getRequests/getHeroById", () => ({
-  getHeroById: jest.fn().mockResolvedValue({ name: "Luke Skywalker" }),
+  getHeroById: jest.fn().mockResolvedValue({ name: "Yoda" }),
 }));
 
 jest.mock("@/helpers/groupHerosWithStarship", () => ({
@@ -28,7 +28,7 @@ describe("HeroConnections component", () => {
     render(<HeroConnections id="1" />);
 
     await waitFor(() => {
-      const heroName = screen.getByRole("heading", { name: "Luke Skywalker" });
+      const heroName = screen.getByRole("heading", { name: "Yoda" });
       expect(heroName).toBeInTheDocument();
     });
   });

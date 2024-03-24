@@ -3,7 +3,7 @@ import { IHero } from "@/types/IHero";
 import { Hero } from "@/components/Hero/Hero";
 
 const mockHero: IHero = {
-  name: "Luke Skywalker",
+  name: "Yoda",
   height: "172",
   mass: "77",
   gender: "male",
@@ -30,7 +30,7 @@ describe("Hero component ", () => {
   it("renders hero`s name", () => {
     render(<Hero hero={mockHero} />);
 
-    const heroNameElement = screen.getByText("Luke Skywalker");
+    const heroNameElement = screen.getByText("Yoda");
     expect(heroNameElement).toBeInTheDocument();
   });
 
