@@ -1,9 +1,9 @@
-import { instance } from "../core";
+import { instance as axiosInstance } from "../core";
 import { Endpoints } from "./constants";
 
 export const getFilms = async () => {
   try {
-    const response = await instance.get(Endpoints.FILMS);
+    const response = await axiosInstance.get(Endpoints.FILMS);
 
     const data = await response.data.results;
 
